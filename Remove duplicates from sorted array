@@ -1,0 +1,30 @@
+//Better Approach
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        Set<Integer> set =new HashSet<Integer>();
+        for(int num:nums){
+            set.add(num);
+        }
+        Integer[] sets=set.toArray(new Integer[set.size()]);
+        Arrays.sort(sets);
+        int i=0;
+        for(;i<set.size();i++){
+            nums[i]=sets[i];
+        }
+        return i;
+    }
+}
+//Optimal Solution
+class Solution {
+    public int removeDuplicates(int[] arr) {
+        int i=0;
+        for(int j=1;j<arr.length;j++){
+            if(arr[i]!=arr[j]){
+                arr[i+1]=arr[j];
+                i++;
+            }
+        }
+        return i+1;
+        
+    }
+}
